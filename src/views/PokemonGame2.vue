@@ -1,120 +1,177 @@
 <script setup lang="ts">
+import { onBeforeMount } from 'vue';
 import { usePokemonsG2 } from '../composables/usePokemonsG2';
-
-import { defineComponent, ref } from 'vue';
-
 import { useRoute } from 'vue-router';
-
 const route = useRoute();
 
-import { storeToRefs } from 'pinia';
-
-import { usePokemonStoreG2 } from './../store/pokemonStoreG2';
-
-import { Pokemon } from '../interfaces/pokemon';
-import { text } from 'stream/consumers';
-
-const { 
-    pokemonArr: pokemons, 
-    imgSrcHeadShape, 
-    imgSrcBodyShape, 
-    imgSrcHindLegs, 
-    imgSrcFrontLegs, 
-    imgSrcTail, 
-    imgSrcEyes, 
-    imgSrcMouth, 
-    imgSrcEars, 
-    imgSrcDetails, 
-    imgSrcColors, 
-    setPokemonHeadShape,
-    setPokemonBodyShape,
-    setPokemonHindLegs,
-    setPokemonFrontLegs,
-    setPokemonTail,
-    setPokemonEyes,
-    setPokemonMouth,
-    setPokemonEars,
-    setPokemonDetails,
-    setPokemonColors,
-    newGame 
-} = usePokemonsG2();
-    
-setPokemonHeadShape();
-setPokemonBodyShape();
-setPokemonHindLegs();
-setPokemonFrontLegs();
-setPokemonTail();
-setPokemonEyes();
-setPokemonMouth();
-setPokemonEars();
-setPokemonDetails();
-setPokemonColors();
-
+onBeforeMount (async () => {
+    await buildRandomPokemonsG2();
+})
+const {
+  head,
+  body,
+  hindLegs,
+  frontLegs,
+  tail,
+  eyes,
+  mouth,
+  ears,
+  details,
+  color,
+  buildRandomPokemonsG2
+} = usePokemonsG2(); 
 </script>
 
-
 <template>
-    <h1 class="ma-2 text-center" v-if="!pokemons">Please wait...</h1>
-    <div class="d-flex justify-center my-6">
-        <v-card id="pokemonCard" class="justify-center" 
-        variant="outlined"
-        color="darkred"
-        rounded="xl"
-        >
-            <div id="cardTitle">
-                <v-card-title class="text-h4 px-8 py-8 mb-6" >
-                    CREATE YOUR OWN POKEMON
-                </v-card-title>
+    <div class="d-flex w-90 justify-center my-4 mx-6">
+      <v-card id="pokemonCard" class="justify-center"
+              variant="outlined"
+              color="darkred"
+              rounded="xl"
+      >
+        <div class="d-flex frex-row align-center mb-4" id="cardTitle">
+          <v-card-title class="text-h5 justify-center my-4 ml-6">
+            CREATE YOUR OWN POKEMON
+          </v-card-title>
+          <v-spacer></v-spacer>
+          <v-btn class="my-4 mr-6" @click="buildRandomPokemonsG2"
+                   color="blue"
+            >
+              New Pokemons
+            </v-btn>
+        </div>
+        <div class="d-flex flex-wrap justify-center w-90 mx-6" id="card-content">
+          <div class="d-flex justify-center flex-column mb-4 " id="pokemonProperty">
+            <h2 class="feature">Head shape</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="head?.image"
+                alt="pokemon">
             </div>
-            <div class="d-flex justify-center flex-column mb-6 " id="pokemonProperty">
-                <v-btn class="d-flex justify-center mb-6 mx-4" @click="setPokemonHeadShape()">Head shape</v-btn>
-                <div class="d-flex justify-center mx-4" id="pokemon-container" >
-                    <img 
-                    :src="imgSrcHeadShape" 
-                    alt="pokemon">
-                </div>
-                <p class="d-flex justify-center mb-6 mx-4" >{pokemon.name}</p>
+            <p class="d-flex justify-center mb-6 mx-4">{{ head?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4 " id="pokemonProperty">
+            <h2 class="feature">Body shape</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="body?.image"
+                alt="pokemon">
             </div>
-            <div class="mx-5 my-5 ">
-                <PokemonImage></PokemonImage>
+            <p class="d-flex justify-center mb-6 mx-4">{{ body?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4 " id="pokemonProperty">
+            <h2 class="feature">Hind legs</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="hindLegs?.image"
+                alt="pokemon">
             </div>
-            <div class="my-5">
-                <PokemonOptions></PokemonOptions>
+            <p class="d-flex justify-center mb-6 mx-4">{{ hindLegs?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4 " id="pokemonProperty">
+            <h2 class="feature">Front legs</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="frontLegs?.image"
+                alt="pokemon">
             </div>
-            <v-card-actions class="d-flex flex-no-wrap justify-center align-center flex-column my-4 mx-auto">
-                <div class="d-flex align-center flex-column mx-auto">
-                    <v-btn class="my-6" @click="newGame"
-                    variant="outlined"
-                    color="blue"
-                    >
-                        New Pokemon
-                    </v-btn>
-                </div>
-            </v-card-actions>
-        </v-card>
+            <p class="d-flex justify-center mb-6 mx-4">{{ frontLegs?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4" id="pokemonProperty">
+            <h2 class="feature">Tail</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="tail?.image"
+                alt="pokemon">
+            </div>
+            <p class="d-flex justify-center mb-6 mx-4">{{ tail?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4" id="pokemonProperty">
+            <h2 class="feature">Eyes</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="eyes?.image"
+                alt="pokemon">
+            </div>
+            <p class="d-flex justify-center mb-6 mx-4">{{ eyes?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4" id="pokemonProperty">
+            <h2 class="feature">Mouth</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="mouth?.image"
+                alt="pokemon">
+            </div>
+            <p class="d-flex justify-center mb-6 mx-4">{{ mouth?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4" id="pokemonProperty">
+            <h2 class="feature">Ears</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="ears?.image"
+                alt="pokemon">
+            </div>
+            <p class="d-flex justify-center mb-6 mx-4">{{ ears?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4" id="pokemonProperty">
+            <h2 class="feature">Details</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="details?.image"
+                alt="pokemon">
+            </div>
+            <p class="d-flex justify-center mb-6 mx-4">{{ details?.name }}</p>
+          </div>
+          <div class="d-flex justify-center flex-column mb-4" id="pokemonProperty">
+            <h2 class="feature">Colors</h2>
+            <div class="d-flex justify-center mx-4" id="pokemon-container">
+              <img
+                :src="color?.image"
+                alt="pokemon">
+            </div>
+            <p class="d-flex justify-center mb-6 mx-4">{{ color?.name }}</p>
+          </div>
+  
+        </div>
+        <v-card-actions class="">
+            <div class="w-100 mx-6">
+                <v-form>
+                    <v-text-field class="ml-10 mr-6" label="Name your pokemon"></v-text-field>
+                </v-form>
+                <v-file-input :show-size="1000" label="Import your pokemon's picture" variant="outlined"></v-file-input>
+                <v-btn type="submit" block class="mb-4">Submit</v-btn>
+            </div>
+        </v-card-actions>
+      </v-card>
     </div>
-    
-</template>
+  
+  </template>
 
 <style scoped>
+#card-content{
+    background-color: white;
+}
+.feature {
+    color: #CC0000;
+    margin: auto;
+}
 #cardTitle {
     background-color: #CC0000;
     color: white;
     font-weight: bold;
 }
-#cardTitle .v-card-title{
-    color: white;
-    font-weight: bold;
+#pokemonProperty{
+    background-color: white;
 }
 #pokemon-container {
-    height: 100px;
+    height: 160px;
+    background-color: white;
+}
+p {
+    color: black;
+    text-emphasis-color: black;
 }
 img {
-    height: 100px;
-    user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
+    height: 160px;
 }
 </style>
