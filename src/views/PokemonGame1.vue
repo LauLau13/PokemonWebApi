@@ -61,7 +61,7 @@ mixPokemonArray();
     <h1 class="ma-2 text-center" v-if="!pokemon">Please wait...</h1>
 
     <div v-else class="d-flex justify-center my-6">
-        <v-card id="pokemonCard" class="justify-center" 
+        <v-card id="pokemonCard" class="justify-center bg-white" 
         variant="outlined"
         color="darkred"
         rounded="xl"
@@ -71,7 +71,7 @@ mixPokemonArray();
                     WHO'S THAT POKEMON?
                 </v-card-title>
             </div>
-            <div class="mx-5 my-5 ">
+            <div class="mx-5 my-5 bg-white">
                 <PokemonImageG1></PokemonImageG1>
             </div>
             <div class="my-5">

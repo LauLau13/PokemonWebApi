@@ -8,6 +8,10 @@ function goToHome() {
   router.push('/');
 }
 
+function goToPokedex(){
+    router.push('/Pokedex');
+}
+
 function goTPokemonGame1() {
   router.push('/PokemonGame1');
 }
@@ -28,7 +32,7 @@ function goTPokemonGame2() {
                     </v-icon>
                 </v-btn>
             </v-toolbar-nav-icon>
-            <v-btn color="white">
+            <v-btn color="white" @click="goToPokedex()">
                 <v-icon size="large">
                     <v-img class="ml-1" src="../assets/pokedex-white.png" size="xl"></v-img>
                 </v-icon>

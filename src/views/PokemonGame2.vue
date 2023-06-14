@@ -24,7 +24,7 @@ const {
 
 <template>
     <div class="d-flex w-90 justify-center my-4 mx-6">
-      <v-card id="pokemonCard" class="justify-center"
+      <v-card id="pokemonCard" class="justify-center bg-white"
               variant="outlined"
               color="darkred"
               rounded="xl"

@@ -22,6 +22,7 @@ export default createVuetify({
           darkred: '#CC0000',
           red: '#FF0000',
           blue: '#3B4CCA',
+          darkblue: '#1B3B7C',
           yellow: '#FFDE00',
           white: '#FFFFFF'
         },

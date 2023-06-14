@@ -14,6 +14,10 @@ const routes = [
     path: '/PokemonGame2',
     component: () => import('@/views/PokemonGame2.vue'),
   },
+  {
+    path: '/Pokedex',
+    component: () => import('@/views/Pokedex.vue'),
+  },
 ]
 
 const router = createRouter({
