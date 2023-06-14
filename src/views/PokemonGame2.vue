@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import { usePokemonsG2 } from '../composables/usePokemonsG2';
 import { useRoute } from 'vue-router';
 const route = useRoute();
 
+const loading = ref(false);
+
 onBeforeMount (async () => {
+    loading.value = true;
     await buildRandomPokemonsG2();
+    loading.value = false;
 })
 const {
   head,
@@ -40,7 +44,8 @@ const {
               New Pokemons
             </v-btn>
         </div>
-        <div class="d-flex flex-wrap justify-center w-90 mx-6" id="card-content">
+        <span v-if="loading" class="justify-center">Please wait...</span>
+        <div v-if="!loading" class="d-flex flex-wrap justify-center w-90 mx-6" id="card-content">
           <div class="d-flex justify-center flex-column mb-4 " id="pokemonProperty">
             <h2 class="feature">Head shape</h2>
             <div class="d-flex justify-center mx-4" id="pokemon-container">
