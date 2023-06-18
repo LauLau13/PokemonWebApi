@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePokemonsG1 } from '../composables/usePokemonsG1';
+import {usePokemonsG1} from '@/composables/usePokemonsG1';
 
 const { pokemonArr: pokemons, checkAnswer } = usePokemonsG1();
 

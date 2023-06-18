@@ -1,9 +1,7 @@
-import { computed } from 'vue';
-import { storeToRefs } from 'pinia';
-
-import { usePokemonStoreG2 } from '../store/pokemonStoreG2';
+import {storeToRefs} from 'pinia';
+import {usePokemonStoreG2} from '@/store/pokemonStoreG2';
 import getPokemonNamesImg from '@/helpers/getPokemonsArrayG2';
-import { Pokemon } from "@/interfaces/pokemon";
+import {Pokemon} from "@/interfaces/pokemon";
 
 
 export const usePokemonsG2 = () => {

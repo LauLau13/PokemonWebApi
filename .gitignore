@@ -1,0 +1,11 @@
+.fleet/run.json
+node_modules/.vite/deps/vuetify_lib_components_VTextarea_index__mjs.js.map
+node_modules/.vite/deps/vuetify_lib_components_VTextarea_index__mjs.js
+node_modules/.vite/deps/vuetify_lib_components_VSlider_index__mjs.js.map
+node_modules/.vite/deps/vuetify_lib_components_VSlider_index__mjs.js
+node_modules/.vite/deps/chunk-ZXT272A2.js.map
+node_modules/.vite/deps/chunk-ZXT272A2.js
+node_modules/.vite/deps/chunk-YFMFKUK3.js.map
+node_modules/.vite/deps/chunk-YFMFKUK3.js
+*.js
+*.map

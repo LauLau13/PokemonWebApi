@@ -10,7 +10,6 @@ interface PokemonState {
 }
 
 export const usePokemonStoreG1 = defineStore('pokemon', {
-
     state: (): PokemonState => ({
         pokemonArr: [],
         pokemon: undefined,
