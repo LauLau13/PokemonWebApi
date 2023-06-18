@@ -8,18 +8,20 @@ import { usePokedexStore } from '@/store/pokedexStore';
 export const usePokedex = () => {
 
     const pokemonStore = usePokedexStore();
-    const { pokemonArr, pokemon } = storeToRefs( pokemonStore );
+    const { pokemonArr } = storeToRefs( pokemonStore );
 
 
-    const loadPokemons = async (num: number) => {
+    const loadPokemons = async (initialNumber: number) => {
         var i :number;
-        for(i=num; i<=(num+20); i++){
+        for(i=initialNumber; i<=(initialNumber+20); i++){
             const poke = await getPokemonById.getPokemonById(i);
-            pokemonStore.setPokemonInArray(poke);
+            await setPokemonInArray(poke);
+            console.log(poke);
+            console.log(pokemonArr);
         }
     }
 
-    const setPokemonInArray = (pokemon : Pokemon) => {
+    async function setPokemonInArray(pokemon : Pokemon) {
         pokemonArr.value.push(pokemon);
     }
 
@@ -30,9 +32,9 @@ export const usePokedex = () => {
     return {
         //! Properties
         pokemonArr,
-        pokemon,
 
         //! Computed
+        
         //! Metodos
         loadPokemons,
         setPokemonInArray,
