@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import {useRouter} from 'vue-router';
 
 const router = useRouter();
 
@@ -16,20 +15,20 @@ function goToPokemonGame2(){
 
 <template>
   <v-container class="fill-height bg-darkblue">
-    <v-carousel class="mt-10 mb-10 rounded-xl" hide-delimiter-background show-arrows="hover">
-      <v-carousel-item cover>
+    <v-carousel class="mt-10 mb-10 rounded-xl" :hide-delimiter-background="true" show-arrows="hover">
+      <v-carousel-item :cover="true">
         <v-img
         class="bg-white"
-        cover
+        :cover="true"
         :aspect-ratio="1"
         src="../assets/PokemonGame1.jpg"
         @click="goToPokemonGame1()"
         ></v-img>
       </v-carousel-item>
-      <v-carousel-item cover>
+      <v-carousel-item :cover="true">
         <v-img
         class="bg-white"
-        cover
+        :cover="true"
         :aspect-ratio="1"
         src="../assets/PokemonGame2.jpg"
         @click="goToPokemonGame2()"

@@ -1,5 +1,5 @@
 import pokemonApi from '../api/pokemonApi'
-import { Pokemon } from '../interfaces/pokemon';
+import { Pokemon } from '@/interfaces/pokemon';
 
 async function getPokemonById( id : number): Promise<Pokemon> {
     const res = await pokemonApi.get(`/${id}`);

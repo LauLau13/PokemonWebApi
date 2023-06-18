@@ -1,9 +1,8 @@
-import { computed } from 'vue';
-import { storeToRefs } from 'pinia';
+import {storeToRefs} from 'pinia';
 
 import getPokemonById from '../helpers/getPokemonById';
-import { Pokemon } from '@/interfaces/pokemon';
-import { usePokedexStore } from '@/store/pokedexStore';
+import {Pokemon} from '@/interfaces/pokemon';
+import {usePokedexStore} from '@/store/pokedexStore';
 
 export const usePokedex = () => {
 
@@ -12,8 +11,8 @@ export const usePokedex = () => {
 
 
     const loadPokemons = async (initialNumber: number) => {
-        var i :number;
-        for(i=initialNumber; i<=(initialNumber+20); i++){
+        let i :number;
+        for(i=initialNumber; i<=(initialNumber+19); i++){
             const poke = await getPokemonById.getPokemonById(i);
             await setPokemonInArray(poke);
             console.log(poke);

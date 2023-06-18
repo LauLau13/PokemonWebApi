@@ -7,7 +7,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="d-flex w-90 justify-center my-4 mx-6">
+  <div class="d-flex w-90 justify-center my-2 mx-2">
     <v-card
       id="pokemonCard"
       class="justify-center bg-white"
@@ -15,32 +15,18 @@ const props = defineProps<{
       color="darkred"
       rounded="xl"
     >
-      <v-img :src="pokemon.image" height="200px" :cover="true" />
-
-      <v-card-title class="align-center">{{ pokemon?.name }}</v-card-title>
-
-      <v-card-subtitle color="black" variant="text"> Descripción </v-card-subtitle>
-
-      <v-card-actions>
-        <v-btn color="darkred" variant="text"> Show more </v-btn>
-
-        <v-spacer></v-spacer>
-
-        <!-- <v-btn
-        :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-        @click="show = !show"
-      ></v-btn> -->
-      </v-card-actions>
-
+      <v-img :src="pokemon.image" height="200px" :cover="true" class="px-6 pt-4" />
+      <v-card-title class="text-align-center pl-8">{{ pokemon?.id }}. {{ pokemon?.name }}</v-card-title>
       <v-expand-transition>
-        <!-- <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div> -->
-      </v-expand-transition>
+      <div v-if="expand">
+        <div class="py-2">
+          <v-card-text class="px-6">Descripción</v-card-text>
+        </div>
+      </div>
+    </v-expand-transition>
+      <v-card-actions class="bg-darkred pl-6 pt-2">
+        <v-btn color="white" variant="text">Show more</v-btn>
+      </v-card-actions>
     </v-card>
   </div>
 </template>
