@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import PokemonGame1 from "@/views/PokemonGame1.vue";
-import { usePokedex } from "../composables/usePokedex";
-import { Pokemon } from "@/interfaces/pokemon";
+import {Pokemon} from "@/interfaces/pokemon";
 
 const props = defineProps<{
   pokemon: Pokemon;
@@ -17,14 +15,14 @@ const props = defineProps<{
       color="darkred"
       rounded="xl"
     >
-      <v-img src="{{ props.pokemon.image }}" height="200px" cover></v-img>
+      <v-img :src="pokemon.image" height="200px" :cover="true" />
 
-      <v-card-title class="align-center">{{ props.pokemon?.name }}</v-card-title>
+      <v-card-title class="align-center">{{ pokemon?.name }}</v-card-title>
 
-      <v-card-subtitle> 1,000 miles of wonder </v-card-subtitle>
+      <v-card-subtitle color="black" variant="text"> Descripción </v-card-subtitle>
 
       <v-card-actions>
-        <v-btn color="orange-lighten-2" variant="text"> Explore </v-btn>
+        <v-btn color="darkred" variant="text"> Show more </v-btn>
 
         <v-spacer></v-spacer>
 
